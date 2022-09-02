@@ -2,7 +2,7 @@ import React from "react";
 import RoutesApp from "./routes";
 import { AuthProvider } from "./contexts/auth";
 import GlobalStyle from "./styles/global";
-
+//aqui estamos renderizando nossa aplicação, usando as rotas definidas e o css no escopo
 const App = () => (
   <AuthProvider>
     <RoutesApp />

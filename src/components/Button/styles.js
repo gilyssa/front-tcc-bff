@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//CSS Do button
 export const Button = styled.button`
   padding: 16px 20px;
   outline: none;

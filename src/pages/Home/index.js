@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <C.Container>
       <C.Title>Home</C.Title>
-      <Button Text="Cadastrar Cliente" onClick={() => [navigate("/signup")]}>
+      <Button Text="Cadastrar Cliente" onClick={() => [navigate("/cadastroCliente")]}>
         CadastrarCliente 
       </Button>
       <Button Text="Pesquisar Cliente" onClick={() => [navigate("/signup")]}>

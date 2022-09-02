@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext({});
 
+//estamos criando o contexto de autenticação, singin e singout.
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
 
@@ -58,6 +59,27 @@ export const AuthProvider = ({ children }) => {
 
     return;
   };
+  const singCadastro = (email, password, telefone, cpf, aniversario, nome) => {
+    const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+
+    const hasUser = usersStorage?.filter((user));
+
+    if (hasUser?.length) {
+      return "Já tem uma cliente com esse email";
+    }
+
+    let newUser;
+
+    if (usersStorage) {
+      newUser = [...usersStorage, { email, password, telefone, cpf, aniversario,nome }];
+    } else {
+      newUser = [{ email, password, telefone, cpf, aniversario,nome }];
+    }
+
+    localStorage.setItem("users_bd", JSON.stringify(newUser));
+
+    return;
+  };
 
   const signout = () => {
     setUser(null);
@@ -66,7 +88,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, signed: !!user, signin, signup, signout }}
+      value={{ user, signed: !!user, signin, signup, signout,singCadastro }}
     >
       {children}
     </AuthContext.Provider>

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+//estamos aplicando o css global aqui
 const GlobalStyle = createGlobalStyle`
 
   * {
