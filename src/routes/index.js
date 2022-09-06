@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import CadastroCliente from "../pages/CadastroCliente";
+import PesquisarCliente from "../pages/PesquisarCliente";
 
 const Private = ({ Item }) => {
   const { signed } = useAuth();
@@ -22,6 +23,7 @@ const RoutesApp = () => {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/home" element={<Private Item={Home} />} />
           <Route exact path="/cadastroCliente" element={<Private Item={CadastroCliente} />} />
+          <Route exact path="/pesquisarCliente" element={<Private Item={PesquisarCliente} />} />
           <Route path="*" element={<Signin />} />
         </Routes>
       </Fragment>

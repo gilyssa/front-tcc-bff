@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signup = (email, password, telefone, cpf, aniversario, nome) => {
+  const signup = (email, password, nome) => {
     const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
 
     const hasUser = usersStorage?.filter((user) => user.email === email);
@@ -50,16 +50,16 @@ export const AuthProvider = ({ children }) => {
     let newUser;
 
     if (usersStorage) {
-      newUser = [...usersStorage, { email, password, telefone, cpf, aniversario,nome }];
+      newUser = [...usersStorage, { email, password,nome }];
     } else {
-      newUser = [{ email, password, telefone, cpf, aniversario,nome }];
+      newUser = [{ email, password,nome }];
     }
 
     localStorage.setItem("users_bd", JSON.stringify(newUser));
 
     return;
   };
-  const singCadastro = (email, password, telefone, cpf, aniversario, nome) => {
+  const singCadastro = (email, password , nome) => {
     const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
 
     const hasUser = usersStorage?.filter((user));
@@ -71,9 +71,9 @@ export const AuthProvider = ({ children }) => {
     let newUser;
 
     if (usersStorage) {
-      newUser = [...usersStorage, { email, password, telefone, cpf, aniversario,nome }];
+      newUser = [...usersStorage, { email, password,nome }];
     } else {
-      newUser = [{ email, password, telefone, cpf, aniversario,nome }];
+      newUser = [{ email, password,nome }];
     }
 
     localStorage.setItem("users_bd", JSON.stringify(newUser));

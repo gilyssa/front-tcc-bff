@@ -10,16 +10,14 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [emailConf, setEmailConf] = useState("");
   const [senha, setSenha] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [cpf, setCpf] = useState("");
   const [error, setError] = useState("");
-  const [aniversario, setAniversario] = useState("");
+  
   const navigate = useNavigate();
 
   const { signup } = useAuth();
 
   const handleSignup = () => {
-    if (!email | !emailConf | !senha| !telefone | !cpf| !aniversario| !nome ) {
+    if (!email | !emailConf | !senha| !nome ) {
       setError("Preencha todos os campos");
       return;
     } else if (email !== emailConf) {
@@ -27,7 +25,7 @@ const Signup = () => {
       return;
     }
 
-    const res = signup(email, senha,telefone,cpf, aniversario, nome);
+    const res = signup(email, senha, nome);
 
     if (res) {
       setError(res);
@@ -66,24 +64,7 @@ const Signup = () => {
           value={senha}
           onChange={(e) => [setSenha(e.target.value), setError("")]}
         />
-        <Input
-          type="number"
-          placeholder="Digite seu telefone "
-          value={telefone}
-          onChange={(e) => [setTelefone(e.target.value), setError("")]}
-        />
-        <Input
-          type="number"
-          placeholder="Digite seu CPF "
-          value={cpf}
-          onChange={(e) => [setCpf(e.target.value), setError("")]}
-        />
-        <Input
-          type="date"
-          placeholder="Digite sua Data de aniversário"
-          value={aniversario}
-          onChange={(e) => [setAniversario(e.target.value), setError("")]}
-        />
+       
         
         <C.labelError>{error}</C.labelError>
         <Button Text="Inscrever-se" onClick={handleSignup} />

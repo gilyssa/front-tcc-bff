@@ -24,8 +24,11 @@ const Home = () => {
       <Button Text="Sair" onClick={() => [signout(), navigate("/")]}>
         Sair
       </Button>
+      
     </C.Container>
   );
 };
+
+
 
 export default Home;

@@ -6,21 +6,21 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const CadastroCliente = () => {
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [emailConf, setEmailConf] = useState("");
-    const [senha, setSenha] = useState("");
-    const [telefone, setTelefone] = useState("");
-    const [cpf, setCpf] = useState("");
+    const [nome, setNome] = useState(""); //ok
+    const [email, setEmail] = useState("");//ok
+    const [emailConf, setEmailConf] = useState("");//okk
+    const [senha, setSenha] = useState("");//okk
+    const [telefone, setTelefone] = useState(""); //ok
+    const [cpf, setCpf] = useState("");//ok
     const [error, setError] = useState("");
-    const [aniversario, setAniversario] = useState("");
-    const [TipoSanguineo, setTipoSanguineo] = useState("");
+    const [aniversario, setAniversario] = useState("");//ok
+    const [Tipo_Sanguineo, setTipo_Sanguineo] = useState("");//ok
     const navigate = useNavigate();
   
     const { singCadastro } = useAuth();
   
     const handleCadastroUser = () => {
-      if (!email | !emailConf | !senha| !telefone | !cpf| !aniversario| !nome | !TipoSanguineo ) {
+      if (!email | !emailConf | !senha| !telefone | !cpf| !aniversario| !nome | !Tipo_Sanguineo ) {
         setError("Preencha todos os campos");
         return;
       } else if (email !== emailConf) {
@@ -28,7 +28,7 @@ const CadastroCliente = () => {
         return;
       }
   
-      const res = singCadastro(email, senha,telefone,cpf, aniversario, nome,TipoSanguineo);
+      const res = singCadastro(email, senha,telefone,cpf, aniversario, nome,Tipo_Sanguineo);
   
       if (res) {
         setError(res);
@@ -50,6 +50,30 @@ const CadastroCliente = () => {
             onChange={(e) => [setNome(e.target.value), setError("")]}
           />
           <Input
+            type="number"
+            placeholder="Digite seu CPF "
+            value={cpf}
+            onChange={(e) => [setCpf(e.target.value), setError("")]}
+          />
+          <Input
+            type="text"
+            placeholder="Digite seu tipo sanguineo"
+            value={Tipo_Sanguineo}
+            onChange={(e) => [setTipo_Sanguineo(e.target.value), setError("")]}
+          />
+          <Input
+            type="date"
+            placeholder="Digite sua Data de aniversário"
+            value={aniversario}
+            onChange={(e) => [setAniversario(e.target.value), setError("")]}
+          />
+           <Input
+            type="number"
+            placeholder="Digite seu telefone "
+            value={telefone}
+            onChange={(e) => [setTelefone(e.target.value), setError("")]}
+          />
+          <Input
             type="email"
             placeholder="Digite seu E-mail"
             value={email}
@@ -67,36 +91,9 @@ const CadastroCliente = () => {
             value={senha}
             onChange={(e) => [setSenha(e.target.value), setError("")]}
           />
-          <Input
-            type="number"
-            placeholder="Digite seu telefone "
-            value={telefone}
-            onChange={(e) => [setTelefone(e.target.value), setError("")]}
-          />
-          <Input
-            type="number"
-            placeholder="Digite seu CPF "
-            value={cpf}
-            onChange={(e) => [setCpf(e.target.value), setError("")]}
-          />
-          <Input
-            type="date"
-            placeholder="Digite sua Data de aniversário"
-            value={aniversario}
-            onChange={(e) => [setAniversario(e.target.value), setError("")]}
-          />
-          <Input
-            type="text"
-            placeholder="Digite seu tipo sanguineo"
-            value={TipoSanguineo}
-            onChange={(e) => [setTipoSanguineo(e.target.value), setError("")]}
-          />
-          
           <C.labelError>{error}</C.labelError>
-          <Button Text="Cadastrar" onClick={() => [navigate("/cadastroCliente")]}/> 
-          
-          
-      
+          <Button Text="Cadastrar" onClick={() => [navigate("/home")]}/> 
+
         </C.Content>
       </C.Container>
     );

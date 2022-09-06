@@ -2,6 +2,8 @@ PARA RODAR O PROJETO IREMOS PRECISAR DE:
 
 
 
-NPM 
-REACT-DOM
-REACT-ROUTER-DOM
+NPM install 
+npm install REACT-DOM
+npm install REACT-ROUTER-DOM
+npm install styled-components
+npm install axios

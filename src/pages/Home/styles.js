@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  gap: 20px;
+  gap: 25px;
 `;
 
 export const Title = styled.h2``;
