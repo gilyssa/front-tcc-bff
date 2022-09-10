@@ -4,6 +4,8 @@ import Button from "../../components/Button";
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import logo1 from "../../img/logo1.png"
+import styles from "./styles";
 
 const Signup = () => {
   const [nome, setNome] = useState("");
@@ -38,8 +40,9 @@ const Signup = () => {
 
   return (
     <C.Container>
-      <C.Label>SALÃO DE BELEZA IMG</C.Label>
+      
       <C.Content>
+      <img  src={logo1 }/>
       <Input
           type="name"
           placeholder="Digite seu nome"

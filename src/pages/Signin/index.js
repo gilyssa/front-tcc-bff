@@ -4,8 +4,13 @@ import Button from "../../components/Button";
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import logo2 from "../../img/logo2.png"
+import logo3 from "../../img/logo3.png"
+import logo1 from "../../img/logo1.png"
 
 const Signin = () => {
+
+  
   const { signin } = useAuth();
   const navigate = useNavigate();
 
@@ -31,8 +36,10 @@ const Signin = () => {
 
   return (
     <C.Container>
-      <C.Label>SALÃO DE BELEZA</C.Label>
+      
       <C.Content>
+      <img  src={logo1 }/>
+      
         <Input
           type="email"
           placeholder="Digite seu E-mail"
@@ -59,6 +66,7 @@ const Signin = () => {
         
       </C.Content>
     </C.Container>
+    
   );
 };
 
