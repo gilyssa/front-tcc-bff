@@ -5,39 +5,39 @@ import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import logo1 from "../../img/logo1.png"
-import styles from "./styles";
+
 
 const Signup = () => {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailConf, setEmailConf] = useState("");
-  const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
   const [error, setError] = useState("");
-  
+
   const navigate = useNavigate();
-
-  const { signup } = useAuth();
-
-  const handleSignup = () => {
-    if (!email | !emailConf | !senha| !nome ) {
-      setError("Preencha todos os campos");
-      return;
-    } else if (email !== emailConf) {
-      setError("Os e-mails não são iguais");
-      return;
-    }
-
-    const res = signup(email, senha, nome);
-
-    if (res) {
-      setError(res);
-      return;
-    }
-
-    alert("Usuário cadatrado com sucesso!");
-    navigate("/");
+  const objetos = {
+    nome: nome,
+    email: email,
+    senha: senha,
   };
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    await fetch('https://react-api-bff.herokuapp.com/api/usuarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(objetos),
+    }).then((response) => {
+      console.log(response);
+      console.log(objetos);
+      localStorage.setItem("cadastro", JSON.stringify({ objetos }));
+      return response.json();
+    });
+    navigate("/");
+  }
+  
   return (
     <C.Container>
       
@@ -55,12 +55,7 @@ const Signup = () => {
           value={email}
           onChange={(e) => [setEmail(e.target.value), setError("")]}
         />
-        <Input
-          type="email"
-          placeholder="Confirme seu E-mail"
-          value={emailConf}
-          onChange={(e) => [setEmailConf(e.target.value), setError("")]}
-        />
+       
         <Input
           type="password"
           placeholder="Digite sua Senha"
@@ -70,7 +65,7 @@ const Signup = () => {
        
         
         <C.labelError>{error}</C.labelError>
-        <Button Text="Inscrever-se" onClick={handleSignup} />
+        <Button Text="Inscrever-se" onClick={handleSubmit} />
         <C.LabelSignin>
           Já tem uma conta?
           <C.Strong>

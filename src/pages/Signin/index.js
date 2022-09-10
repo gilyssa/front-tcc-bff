@@ -3,36 +3,47 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import logo2 from "../../img/logo2.png"
-import logo3 from "../../img/logo3.png"
+
 import logo1 from "../../img/logo1.png"
 
 const Signin = () => {
 
   
-  const { signin } = useAuth();
+
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+ 
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
   const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    if (!email | !senha) {
-      setError("Preencha todos os campos");
-      return;
-    }
-
-    const res = signin(email, senha);
-
-    if (res) {
-      setError(res);
-      return;
-    }
-
-    navigate("/home");
+  const objetos = {
+    
+    email: email,
+    senha: senha,
   };
+
+  async function handleLogin(event) {
+    event.preventDefault();
+
+    await fetch('https://react-api-bff.herokuapp.com/api/usuarios/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(objetos),
+      
+    }).then((response) => {
+      
+      console.log(response);
+   
+      return localStorage.setItem("login", JSON.stringify({ response }));
+      
+      
+    }
+    );
+    navigate("/home");
+  }
 
   return (
     <C.Container>
