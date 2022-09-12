@@ -4,10 +4,10 @@ import styled from "styled-components";
 export const Input = styled.input`
   outline: none;
   padding: 16px 20px;
-  width: 80%;
-  border-radius: 5px;
+  width: 90%;
+  border-radius: 20px;
   font-size: 20px;
 
-  background-color: #f0f2f5;
+  background-color: #fff;
   border: none;
 `;

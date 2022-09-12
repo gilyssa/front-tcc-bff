@@ -8,9 +8,9 @@ import CadastroCliente from "../pages/CadastroCliente";
 import PesquisarCliente from "../pages/PesquisarCliente";
 
 const Private = ({ Item }) => {
-  const { signed } = useAuth();
+  const { signin } = useAuth();
 
-  return signed > 0 ? <Item /> : <Signin />;
+  return signin > 0 ? <Item /> : <Signin />;
 };
 
 const RoutesApp = () => {
@@ -21,9 +21,9 @@ const RoutesApp = () => {
         <Routes>
           <Route path="/" element={<Signin />} />
           <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/home" element={<Private Item={Home} />} />
-          <Route exact path="/cadastroCliente" element={<Private Item={CadastroCliente} />} />
-          <Route exact path="/pesquisarCliente" element={<Private Item={PesquisarCliente} />} />
+          <Route exact path="/home" element={<Home/>} />
+          <Route exact path="/cadastroCliente" element={< CadastroCliente />} />
+          <Route exact path="/pesquisarCliente" element={<PesquisarCliente/>} />
           <Route path="*" element={<Signin />} />
         </Routes>
       </Fragment>

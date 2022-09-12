@@ -17,11 +17,11 @@ export const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  box-shadow: 0 1px 2px #0003;
+  box-shadow: 0 0px 15px 12px #000;
   background-color: #c8fefe;
   max-width: 350px;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 30px;
 `;
 
 export const Label = styled.label`

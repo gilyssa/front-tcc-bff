@@ -16,11 +16,12 @@ const PesquisarCliente = () => {
       <C.Container>
         
         <C.Label>PESQUISAR CLIENTES</C.Label>
-        <C.Content>
+        <C.Contentt>
         <Input
             
             placeholder="Nome Do Cliente"
           />
+         
         <C.Content className = 'xablau'>
         <Input
             
@@ -54,7 +55,7 @@ const PesquisarCliente = () => {
 
           <Button Text="PESQUISAR" onClick={() => []}/> 
 
-        </C.Content>
+        </C.Contentt>
       </C.Container>
     );
   };

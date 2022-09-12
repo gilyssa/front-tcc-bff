@@ -17,7 +17,7 @@ export const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  box-shadow: 0 1px 2px #0003;
+  box-shadow: 0 0px 15px 12px #000;
   background-color: #c8fefe;
   max-width: 350px;
   padding: 20px;
@@ -25,7 +25,7 @@ export const Content = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 18px;
+  font-size: 40px;
   font-weight: 600;
   color: #101c46;
 `;

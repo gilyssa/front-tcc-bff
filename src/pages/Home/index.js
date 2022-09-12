@@ -16,7 +16,7 @@ const Home = () => {
       <Button Text="Cadastrar Cliente" onClick={() => [navigate("/cadastroCliente")]}>
         CadastrarCliente 
       </Button>
-      <Button Text="Pesquisar Cliente" onClick={() => [navigate("/signup")]}>
+      <Button Text="Pesquisar Cliente" onClick={() => [navigate("/pesquisarCliente")]}>
         PesquisarCliente 
       </Button>
       <Button Text="Ficha Avaliativa" onClick={() => [navigate("/signup")]}>

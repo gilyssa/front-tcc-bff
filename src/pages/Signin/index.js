@@ -25,24 +25,29 @@ const Signin = () => {
 
   async function handleLogin(event) {
     event.preventDefault();
-
-    await fetch('https://react-api-bff.herokuapp.com/api/usuarios/login', {
+    const options = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(objetos),
+    };
+
+    return fetch(
+      'https://react-api-bff.herokuapp.com/api/usuarios/login',
+      options,
+    )
+      .then((response) => response.json())
       
-    }).then((response) => {
-      
-      console.log(response);
-   
-      return localStorage.setItem("login", JSON.stringify({ response }));
-      
-      
-    }
-    );
-    navigate("/home");
+      .then((signin) => {
+        navigate("/home")
+        localStorage.setItem('signin', JSON.stringify({ signin }));
+        const login = localStorage.getItem('signin');
+        console.log(typeof login);
+        console.log(signin.token);
+        
+      })
+      .catch((err) => console.log(err.message));
   }
 
   return (

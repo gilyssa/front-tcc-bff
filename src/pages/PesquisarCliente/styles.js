@@ -7,8 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 10px;
   height: 100vh;
-  width: 100%;
-  
+  background-color: #deb887;
 `;
 
 export const Content = styled.div`
@@ -18,23 +17,31 @@ export const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  heigth: 900px;
-  box-shadow: 0 1px 2px #0003;
-  background-color: white;
-  max-width: 1600px;
+  box-shadow: 0 0px 15px 12px #000;
+  background-color: #c8fefe;
+  max-width: 700px;
   padding: 20px;
-  padding-top: 40px;
-  border-radius: 20px;
+  border-radius: 30px;
+`;
+export const Contentt = styled.div`
+  gap: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 0px 15px 12px #000;
+  background-color: #c8fefe;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 30px;
 `;
 
 
 export const Label = styled.label`
-  font-size: 18px;
+  font-size: 40px;
   font-weight: 600;
-  color: #676767;
+  color: #101c46;
 `;
-
-
-
 
 
