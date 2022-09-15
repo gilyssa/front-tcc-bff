@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import * as C from "./styles";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import {  useNavigate } from "react-router-dom";
+
 import logo1 from "../../img/logo1.png";
+
 
 const CadastroCliente = () => {
     const [nome, setNome] = useState(""); //ok
     const [email, setEmail] = useState("");//ok
-    const [emailConf, setEmailConf] = useState("");//okk
     const [senha, setSenha] = useState("");//okk
     const [telefone, setTelefone] = useState(""); //ok
     const [cpf, setCpf] = useState("");//ok
@@ -18,26 +18,38 @@ const CadastroCliente = () => {
     const [Tipo_Sanguineo, setTipo_Sanguineo] = useState("");//ok
     const navigate = useNavigate();
   
-    const { singCadastro } = useAuth();
+    const objetos = {
+      nome: nome,
+      email: email,
+      senha: senha,
+      telefone:telefone,
+      cpf:cpf,
+      aniversario:aniversario,
+      Tipo_Sanguineo:Tipo_Sanguineo,
+    };
   
-    const handleCadastroUser = () => {
-      if (!email | !emailConf | !senha| !telefone | !cpf| !aniversario| !nome | !Tipo_Sanguineo ) {
-        setError("Preencha todos os campos");
-        return;
-      } else if (email !== emailConf) {
-        setError("Os e-mails não são iguais");
-        return;
-      }
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(objetos),
+      };
   
-      const res = singCadastro(email, senha,telefone,cpf, aniversario, nome,Tipo_Sanguineo);
+      return fetch(
+        'https://react-api-bff.herokuapp.com/api/clientes',
+        options,
+      )
+        .then((response) => {
+          response.token = localStorage("signin", JSON.stringify({response}));
+          
+          localStorage.setItem("cadastro", JSON.stringify({ objetos }));
+          return response.json();
+        });
+      
   
-      if (res) {
-        setError(res);
-        return;
-      }
-  
-      alert("Usuário cadatrado com sucesso!");
-      navigate("/");
     };
   
     return (
@@ -82,19 +94,13 @@ const CadastroCliente = () => {
             onChange={(e) => [setEmail(e.target.value), setError("")]}
           />
           <Input
-            type="email"
-            placeholder="Confirme seu E-mail"
-            value={emailConf}
-            onChange={(e) => [setEmailConf(e.target.value), setError("")]}
-          />
-          <Input
             type="password"
             placeholder="Digite sua Senha"
             value={senha}
             onChange={(e) => [setSenha(e.target.value), setError("")]}
           />
           <C.labelError>{error}</C.labelError>
-          <Button Text="Cadastrar" onClick={() => [navigate("/home")]}/> 
+          <Button Text="Cadastrar Cliente" onClick={handleSubmit} />
 
         </C.Content>
       </C.Container>

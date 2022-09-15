@@ -7,3 +7,4 @@ npm install REACT-DOM *
 npm install REACT-ROUTER-DOM *
 npm install styled-components *
 npm install axios *
+npm install react-bootstrap bootstrap@5.1.3
