@@ -5,6 +5,7 @@ import * as C from "./styles";
 import {  useNavigate } from "react-router-dom";
 
 import logo1 from "../../img/logo1.png";
+import Signin from "../Signin";
 
 
 const CadastroCliente = () => {
@@ -34,6 +35,8 @@ const CadastroCliente = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          "token":localStorage.getItem("signin"),
+          
         },
         body: JSON.stringify(objetos),
       };
@@ -41,12 +44,14 @@ const CadastroCliente = () => {
       return fetch(
         'https://react-api-bff.herokuapp.com/api/clientes',
         options,
-      )
+      )  
         .then((response) => {
-          response.token = localStorage("signin", JSON.stringify({response}));
-          
+          const login = localStorage.getItem('signin');
+          console.log(typeof login);
+          console.log(login.token);
           localStorage.setItem("cadastro", JSON.stringify({ objetos }));
           return response.json();
+          
         });
       
   

@@ -40,9 +40,6 @@ deletarClientes = (id) => {
     }
   } )
   
-
-    
-  
 }
     render(){
       return(
