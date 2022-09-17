@@ -17,7 +17,7 @@ const Procedimentos = () => {
          
       </Button>
 
-    <Button Text="Listar Procedimentos" onClick={() => [navigate("/procedimentos")]}>
+    <Button Text="Listar Procedimentos" onClick={() => [navigate("/listarProcedimentos")]}>
          
       </Button>
 
