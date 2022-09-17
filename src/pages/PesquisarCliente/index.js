@@ -8,15 +8,11 @@ class PesquisarCliente extends React.Component{
       super(props);
 
       this.state = {
-        clientes:[
-          {'id':1, 'nome':'Gabriel Lucio', 'email':'gabriel@gmail.com'},
-          {'id':2, 'nome':'Gabriel Lucio', 'email':'gabriel@gmail.com'},
-          {'id':3, 'nome':'Yohanny Soares De Moraes', 'email':'yohanny@gmail.com'}
-        ]
+        clientes:[]
       }
     }
 componentDidMount(){
-  alert("O componente foi montado!!!!")
+  alert("Buscando lista de usuários")
   this.buscarClientes();
 }
 componentWillUnmount(){
@@ -24,14 +20,24 @@ componentWillUnmount(){
 }
 
 buscarClientes = () =>{
-  fetch("htpps")
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      "token":JSON.parse(localStorage.getItem("signin")).signin.token,
+
+    }
+  };
+
+  fetch("https://react-api-bff.herokuapp.com/api/clientes?",options)
+
   .then(response => response.json())
   .then(dados => {
-
+    console.log(dados);
     this.setState({clientes: dados})
+    
   })
 }
-
 deletarClientes = (id) => {
   fetch("htpps"+id,{method: 'DELETE'})
   .then(response =>{
@@ -44,6 +50,10 @@ deletarClientes = (id) => {
     render(){
       return(
         <C.Container>
+        <C.Gabriel>
+        <label>teste</label>
+        <label>teste</label>
+        </C.Gabriel>
         <C.Content>
         <Table striped bordered hover>
           <thead>

@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 
 import * as C from "./styles";
 import logo1 from "../../img/logo1.png"
-const Home = () => {
+const Clientes = () => {
   const { signout } = useAuth();
   const navigate = useNavigate();
 
@@ -13,15 +13,14 @@ const Home = () => {
     <C.Container>
     <C.Content>
     <img  src={logo1 }/>
-    <Button Text="Clientes" onClick={() => [navigate("/clientes")]}>
+    <Button Text="Cadastrar Cliente" onClick={() => [navigate("/cadastroCliente")]}>
+        CadastrarCliente 
+      </Button>
+      <Button Text="Pesquisar Cliente" onClick={() => [navigate("/pesquisarCliente")]}>
         CadastrarCliente 
       </Button>
 
-    <Button Text="Procedimentos" onClick={() => [navigate("/procedimentos")]}>
-        CadastrarCliente 
-      </Button>
-
-      <Button Text="Sair" onClick={() => [signout(), navigate("/")]}>
+      <Button Text="Voltar" onClick={() => [signout(), navigate("/")]}>
         Sair
       </Button>
     </C.Content>
@@ -29,6 +28,4 @@ const Home = () => {
   );
 };
 
-
-
-export default Home;
+export default Clientes;
