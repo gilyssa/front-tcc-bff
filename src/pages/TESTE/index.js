@@ -12,7 +12,6 @@ export class Teste extends Component {
       alunos: [],
       modalAberta: false
     };
-
     this.buscarAlunos = this.buscarAlunos.bind(this);
     this.buscarAluno = this.buscarAluno.bind(this);
     this.atualizarAluno = this.atualizarAluno.bind(this);
@@ -20,14 +19,12 @@ export class Teste extends Component {
     this.abrirModalInserir = this.abrirModalInserir.bind(this);
     this.fecharModal = this.fecharModal.bind(this);
     this.atualizaNome = this.atualizaNome.bind(this);
-    
   }
 
   componentDidMount() {
     this.buscarAlunos();
   }
 
-  // GET (todos alunos)
   buscarAlunos() {
     const options = {
         method: 'GET',
@@ -41,8 +38,6 @@ export class Teste extends Component {
       .then(response => response.json())
       .then(data => this.setState({ alunos: data }));
   }
-  
-  //GET (aluno com determinado id)
   buscarAluno(id) {
    
     fetch('https://react-api-bff.herokuapp.com/api/procedimentos?' + id,{
@@ -61,9 +56,12 @@ export class Teste extends Component {
   }
 
   atualizarAluno(aluno) {
-    fetch('https://localhost:44362/api/alunos/' + aluno.id, {
+    fetch('https://react-api-bff.herokuapp.com/api/procedimentos/' + aluno.id, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+      "token":JSON.parse(localStorage.getItem("signin")).signin.token,
+      "usuario_id": JSON.parse(localStorage.getItem("signin")).signin.usuario,
+     },
       body: JSON.stringify(aluno)
     }).then((resposta) => {
       if (resposta.ok) {
@@ -117,6 +115,13 @@ export class Teste extends Component {
     }
   }
 
+  renderTeste(){
+    <div>
+      <Button variant="primary" form="modalForm" type="submit">
+            Confirmar
+      </Button>
+      </div>
+  }
   renderModal() {
     return (
       <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
@@ -150,7 +155,7 @@ export class Teste extends Component {
         <thead>
           <tr>
             <th>Descrição</th>
-            <th>Prioridade</th>
+            <th>Opções</th>
            
           </tr>
         </thead>
@@ -159,9 +164,10 @@ export class Teste extends Component {
             <tr key={aluno.id}>
               <td>{aluno.nome}</td>
               <td>
-                <div>
-                  <Button variant="link" onClick={() => this.abrirModalAtualizar(aluno.id)}>Atualizar</Button>
-                </div>
+                
+            <Button variant="link" onClick={() => this.abrirModalAtualizar(aluno.id)}>Atualizar</Button>
+            <Button variant="link" onClick={() => this.abrirModalAtualizar(aluno.id)}>Ficha Avaliativa</Button>
+                
               </td>
             </tr>
           ))}
@@ -175,6 +181,10 @@ export class Teste extends Component {
       
      <C.Container>   
       <C.Content>
+        <C.Teste>
+          <div> Label para pesquisar</div>
+          <div> Botao</div>
+        </C.Teste>
         {this.renderTabela()}
         {this.renderModal()}
         </C.Content>
