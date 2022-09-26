@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
+import {  useNavigate } from "react-router-dom";
 import * as C from "./styles";
 
 class PesquisarCliente extends React.Component{
@@ -69,12 +70,10 @@ deletarClientes = (id) => {
               <tr>
                 <td>{cliente.nome}</td>
                 <td>{cliente.email}</td>
-                <td>Atualizar <Button variant="danger" onClick={()=>this.deletarClientes(cliente.id)}>Excluir</Button></td>
+                <td><Button variant="danger" onClick={()=>this.deletarClientes(cliente.id)}>Excluir</Button></td>
             </tr>
               )
-            }
-             
-              
+            }  
           </tbody>
         </Table>
 

@@ -44,7 +44,7 @@ const CadastrarProcedimentos = () => {
         .then((response) => {
           localStorage.setItem("cadastro", JSON.stringify({ objetos }));
           
-          return response.json(), navigate("/home");;  
+          return response.json(), navigate("/home");  
         });
 
     };
