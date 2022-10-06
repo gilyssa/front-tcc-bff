@@ -12,3 +12,4 @@ npm install react-table
 npm install -g create-react-app
 npm install classnames
 npm install sass
+npm install --save react-table-scrollbar
