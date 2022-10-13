@@ -14,6 +14,7 @@ import { Teste } from "../pages/TESTE";
 import TesteNovo from "../pages/TesteNovo";
 import AlterarSenha from "../pages/AlterarSenha";
 import FichaAvaliativa from "../pages/FichaAvaliativa";
+import RecuperarSenha from "../pages/RecuperarSenha";
 
 const Private = ({ Item }) => {
   const { signin } = useAuth();
@@ -38,6 +39,7 @@ const RoutesApp = () => {
           <Route exact path="/cadastrarProcedimentos" element={<CadastrarProcedimentos/>} />
           <Route exact path="/listarProcedimentos" element={<ListarProcedimentos/>} />
           <Route exact path="/testeNovo" element={<TesteNovo/>} />
+          <Route exact path="/recuperarSenha" element={<RecuperarSenha/>} />
           <Route exact path="/alterarSenha" element={<AlterarSenha/>} />
           <Route exact path="/fichaAvaliativa" element={<FichaAvaliativa/>} />
           <Route path="*" element={<Signin />} />

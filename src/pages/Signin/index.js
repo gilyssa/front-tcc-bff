@@ -77,7 +77,7 @@ const Signin = () => {
           </C.Strong>
         </C.LabelSignup>
           <C.Strong>
-            <Link to="/signup">&nbsp;Esqueceu sua senha?</Link>
+            <Link to="/recuperarSenha">&nbsp;Esqueceu sua senha?</Link>
           </C.Strong>
         
       </C.Content>
