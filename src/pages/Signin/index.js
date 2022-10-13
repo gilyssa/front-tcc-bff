@@ -4,21 +4,16 @@ import Button from "../../components/Button";
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 
-import logo1 from "../../img/logo1.png"
+import logo1 from "../../img/logo1.png";
 
 const Signin = () => {
-
-  
-
   const navigate = useNavigate();
 
- 
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
 
   const objetos = {
-    
     email: email,
     senha: senha,
   };
@@ -26,36 +21,38 @@ const Signin = () => {
   async function handleLogin(event) {
     event.preventDefault();
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(objetos),
     };
 
     return fetch(
-      'https://react-api-bff.herokuapp.com/api/usuarios/login',
-      options,
+      "https://react-api-bff.herokuapp.com/api/usuarios/login",
+      options
     )
-      .then((response) => response.json())
-      
+      .then((response) => {
+        if (response.status === 200) {
+          alert("ok!");
+          navigate("/home");
+          return response.json();
+        } else {
+          alert("erro!");
+        }
+      })
       .then((signin) => {
-        navigate("/home")
-        localStorage.setItem('signin', JSON.stringify({ signin }));
-        const login = localStorage.getItem('signin');
-        console.log(typeof login);
-        console.log(signin.token);
-        
+        localStorage.setItem("signin", JSON.stringify({ signin }));
+        const login = localStorage.getItem("signin");
       })
       .catch((err) => console.log(err.message));
   }
 
   return (
     <C.Container>
-      
       <C.Content>
-      <img  src={logo1 }/>
-      
+        <img src={logo1} />
+
         <Input
           type="email"
           placeholder="Digite seu E-mail"
@@ -76,13 +73,11 @@ const Signin = () => {
             <Link to="/signup">&nbsp;Registre-se</Link>
           </C.Strong>
         </C.LabelSignup>
-          <C.Strong>
-            <Link to="/recuperarSenha">&nbsp;Esqueceu sua senha?</Link>
-          </C.Strong>
-        
+        <C.Strong>
+          <Link to="/recuperarSenha">&nbsp;Esqueceu sua senha?</Link>
+        </C.Strong>
       </C.Content>
     </C.Container>
-    
   );
 };
 

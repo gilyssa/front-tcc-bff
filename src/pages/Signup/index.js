@@ -4,13 +4,12 @@ import Button from "../../components/Button";
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 
-import logo1 from "../../img/logo1.png"
-
+import logo1 from "../../img/logo1.png";
 
 const Signup = () => {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -23,27 +22,29 @@ const Signup = () => {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    await fetch('https://react-api-bff.herokuapp.com/api/usuarios', {
-      method: 'POST',
+    await fetch("https://react-api-bff.herokuapp.com/api/usuarios", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(objetos),
     }).then((response) => {
-      console.log(response);
-      console.log(objetos);
-      localStorage.setItem("cadastro", JSON.stringify({ objetos }));
-      return response.json();
+      if (response.status === 200) {
+        localStorage.setItem("cadastro", JSON.stringify({ objetos }));
+        alert("usuario criado com sucesso!");
+        return response.json();
+      } else {
+        alert("Erro ao criar Usuário!");
+      }
     });
     navigate("/");
   }
-  
+
   return (
     <C.Container>
-      
       <C.Content>
-      <img  src={logo1 }/>
-      <Input
+        <img src={logo1} />
+        <Input
           type="name"
           placeholder="Digite seu nome"
           value={nome}
@@ -55,15 +56,14 @@ const Signup = () => {
           value={email}
           onChange={(e) => [setEmail(e.target.value), setError("")]}
         />
-       
+
         <Input
           type="password"
           placeholder="Digite sua Senha"
           value={senha}
           onChange={(e) => [setSenha(e.target.value), setError("")]}
         />
-       
-        
+
         <C.labelError>{error}</C.labelError>
         <Button Text="Inscrever-se" onClick={handleSubmit} />
         <C.LabelSignin>

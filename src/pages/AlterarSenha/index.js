@@ -28,9 +28,14 @@ const AlterarSenha = () => {
     return fetch(
       "https://react-api-bff.herokuapp.com/api/usuarios/recovery",
       options
-    )
-      .then((response) => response.json(), console.log(response))
-      .catch((err) => console.log(err.message));
+    ).then((response) => {
+      if (response.status === 200) {
+        navigate("/signin");
+        alert("Senha alterada com sucesso!");
+      } else {
+        alert("Erro ao alterar sua senha!");
+      }
+    });
   }
 
   return (
