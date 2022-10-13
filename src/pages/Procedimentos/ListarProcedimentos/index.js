@@ -77,25 +77,26 @@ class ListarProcedimentos extends React.Component {
             <label>teste</label>
           </C.Gabriel>
           <C.Content>
-            <C.Gabriel>
-              <TableScrollbar rows={5} height="200px">
-                <Table striped bordered hover>
-                  <thead>
+            <C.Tabela>
+              <TableScrollbar rows={10}>
+                <Table striped bordered hover class="table-dark">
+                  <tbody>
                     <tr>
                       <td>NOME</td>
-                      <td>EMAIL</td>
+                      <td>ATUALIZAR</td>
                     </tr>
-                  </thead>
-                  <tbody>
                     {this.state.procedimentos.map((procedimentos) => (
                       <tr>
                         <td>{procedimentos.nome}</td>
+                        <td>
+                          <Button>Atualizar</Button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </Table>
               </TableScrollbar>
-            </C.Gabriel>
+            </C.Tabela>
           </C.Content>
         </C.Container>
       </div>

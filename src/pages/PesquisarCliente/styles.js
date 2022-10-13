@@ -23,8 +23,7 @@ export const Content = styled.div`
   max-width: 1200px;
   padding: 20px;
   border-radius: 30px;
-  font-size: 16px
-  
+  font-size: 16px;
 `;
 export const Gabriel = styled.div`
   flex-direction: row;
@@ -33,5 +32,26 @@ export const Gabriel = styled.div`
   align-items: center;
   padding: 20px;
   gap: 15px;
+`;
+export const Tabela = styled.div`
+  flex-direction: row;
+  display: flex;
+  max-height: 800px;
+  align-items: center;
+  padding: 25px;
 
-`
+  table {
+    max-height: 600px;
+  }
+  th {
+    height: 200px;
+  }
+  td {
+    border: 2px solid;
+    height: 25px;
+    width: 700px;
+    align-items: center;
+    text-align: center;
+    color: black;
+  }
+`;

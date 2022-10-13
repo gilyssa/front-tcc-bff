@@ -32,14 +32,24 @@ export const Gabriel = styled.div`
   align-items: center;
   padding: 20px;
   gap: 15px;
+  max-width: 500px;
 `;
 
-export const Gabriele = styled.div`
+export const Tabela = styled.div`
   flex-direction: row;
   display: flex;
-  height: 500px;
-  width: 600px;
+  height: 300px;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   gap: 15px;
+
+  table,
+  th,
+  td {
+    border: 2px solid;
+    width: 500px;
+    align-items: center;
+    text-align: center;
+    color: black;
+  }
 `;

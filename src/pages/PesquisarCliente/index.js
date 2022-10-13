@@ -13,12 +13,9 @@ class PesquisarCliente extends React.Component {
     };
   }
   componentDidMount() {
-    alert("Buscando lista de usuários");
     this.buscarClientes();
   }
-  componentWillUnmount() {
-    alert("O componente Foi desmontado!!!");
-  }
+  componentWillUnmount() {}
 
   buscarClientes = () => {
     const options = {
@@ -51,33 +48,33 @@ class PesquisarCliente extends React.Component {
           <label>teste</label>
         </C.Gabriel>
         <C.Content>
-          <TableScrollbar rows={5}>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <td>NOME</td>
-                  <td>EMAIL</td>
-                  <td>OPÇÕES</td>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.clientes.map((cliente) => (
+          <C.Tabela>
+            <TableScrollbar rows={10}>
+              <Table striped bordered hover>
+                <tbody>
                   <tr>
-                    <td>{cliente.nome}</td>
-                    <td>{cliente.email}</td>
-                    <td>
-                      <Button
-                        variant="danger"
-                        onClick={() => this.deletarClientes(cliente.id)}
-                      >
-                        Excluir
-                      </Button>
-                    </td>
+                    <td>NOME</td>
+                    <td>EMAIL</td>
+                    <td>ALTERAR</td>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-          </TableScrollbar>
+                  {this.state.clientes.map((cliente) => (
+                    <tr>
+                      <td>{cliente.nome}</td>
+                      <td>{cliente.email}</td>
+                      <td>
+                        <Button
+                          variant="warning"
+                          onClick={() => this.deletarClientes(cliente.id)}
+                        >
+                          Alterar
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </TableScrollbar>
+          </C.Tabela>
         </C.Content>
       </C.Container>
     );
