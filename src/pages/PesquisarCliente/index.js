@@ -29,17 +29,33 @@ class PesquisarCliente extends React.Component {
     fetch("https://react-api-bff.herokuapp.com/api/clientes?", options)
       .then((response) => response.json())
       .then((dados) => {
-        console.log(dados);
         this.setState({ clientes: dados });
       });
   };
-  deletarClientes = (id) => {
-    fetch("htpps" + id, { method: "DELETE" }).then((response) => {
-      if (response.ok) {
-        this.buscarClientes();
-      }
-    });
-  };
+
+  // buscarClientes = () => {
+  //   const id = JSON.parse(localStorage.getItem("signin")).signin.usuario;
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       token: JSON.parse(localStorage.getItem("signin")).signin.token,
+  //     },
+  //   };
+
+  //   fetch(
+  //     "https://react-api-bff.herokuapp.com/api/clientes/usuario/" + id,
+  //     options
+  //   )
+  //     .then((response) => response.json())
+  //     .then((dados) => {
+  //       console.log(options);
+  //       console.log(JSON.parse(localStorage.getItem("signin")).signin.usuario);
+
+  //       this.setState({ clientes: dados });
+  //     });
+  // };
+
   render() {
     return (
       <C.Container>
@@ -67,6 +83,12 @@ class PesquisarCliente extends React.Component {
                           onClick={() => this.deletarClientes(cliente.id)}
                         >
                           Alterar
+                        </Button>
+                        <Button
+                          variant="danger"
+                          onClick={() => this.deletarClientes(cliente.id)}
+                        >
+                          Ficha Avaliativa
                         </Button>
                       </td>
                     </tr>
